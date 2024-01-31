@@ -3,14 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asmt 1</title>
+    <title>Invoice Calculator - Assignment 1</title>
+    <style>
+	    thead{
+	        font-family: Arial, Helvetica, sans-serif;
+			font-weight:bold;
+	    }
+	    
+	    td{
+	        padding-left:5px;
+	        padding-right:5px;	        
+	    }
+	    
+	    td.sub-total{
+	        text-align:right;	        
+	    }
+	</style>
 </head>
 <body>
-    <h1 id="pageTitle">Git is Fun!</h1>
-    <p>Git hub allows us to work with others</p>
 
-    <script>
-        document.querySelector("#pageTitle").style.color = "tomato";
-    </script>
+<!--This is the header for the calculator-->
+<h1>Invoice Calculator</h1>
+
+<table>
+	<thead>
+		<tr>
+			<td>ITEM</td>
+			<td>DESCRIPTION</td>
+			<td>QTY</td>
+			<td>PRICE</td>
+			<td>LINE TOTAL</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td><input id="line-1-description" type="text" size="40" value="Anvil" /></td>
+			<td><input id="line-1-quantity" type="text" size="3" value="5" /></td>
+			<td><input id="line-1-price" type="text" size="6" value="35.00" /></td>
+			<td class="sub-total"><span id="line-1"></span></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td><input id="line-2-description" type="text" size="40" value="Rocket Skates (each)" /></td>
+			<td><input id="line-2-quantity" type="text" size="3" value="2" /></td>
+			<td><input id="line-2-price" type="text" size="6" value="24.99" /></td>
+			<td class="sub-total"><span id="line-2"></span></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td><input id="line-3-description" type="text" size="40" value="Giant Magnet" /></td>
+			<td><input id="line-3-quantity" type="text" size="3" value="1" /></td>
+			<td><input id="line-3-price" type="text" size="6" value="125.50" /></td>
+			<td class="sub-total"><span id="line-3"></span></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td><input id="line-4-description" type="text" size="40" value="Ball bearings" /></td>
+			<td><input id="line-4-quantity" type="text" size="3" value="500" /></td>
+			<td><input id="line-4-price" type="text" size="6" value="0.25" /></td>
+			<td class="sub-total"><span id="line-4"></span></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td><input id="line-5-description" type="text" size="40" value="Portable holes" /></td>
+			<td><input id="line-5-quantity" type="text" size="3" value="12" /></td>
+			<td><input id="line-5-price" type="text" size="6" value="15.25" /></td>
+			<td class="sub-total"><span id="line-5"></span></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4" style="text-align:right;">SUB TOTAL</td>  
+			<td class="sub-total"><span id="sub-total"></span></td>	        
+		</tr>
+		<tr>
+			<td colspan="4" style="text-align:right;">DISCOUNT</td>  
+			<td class="sub-total"><span id="discount"></span></td>	        
+		</tr>
+		<tr>
+			<td colspan="4" style="text-align:right;">TAX</td>  
+			<td class="sub-total"><span id="tax"></span></td>	        
+		</tr>
+		<tr>
+			<td colspan="4" style="text-align:right;">TOTAL</td>  
+			<td class="sub-total" style="border-top:solid black 1px"><span id="Total"></span></td>	        
+		</tr>
+	</tfoot>	    
+</table>
+
+<div><button id="calculate">Calculate</button></div>
+<div>NOTE: discounts of 10% are given to orders over $250</div>
+
+<script>
+//My name: Jasnoor Dhanoa
+//Student number: A01208305
+//Assignment name: Assignment 1
+
+function calculate () {
+
+//QUANTITIES and PRICE for item 1
+//Step 1: Here I collected the information about quantity and price for item 1. 
+	const quantity_1 = document.querySelector("#line-1-quantity").value;
+		console.log(quantity_1);
+
+	const price_1 = document.querySelector("#line-1-price").value;
+		console.log(price_1);
+
+//Step 2: Calculate the total for each line const lineTotal = (quantity * price);
+//The line_Total1 is the total amount calculated for item 1. I did this by multiplying the quantity and price, in the previous step, for item one and will use the output value in the next step
+	const line_Total1 = quantity_1 * price_1;
+		console.log(line_Total1);
+// Step 3: Display each line total to the screen
+//I used document.querySelector to show the value of line_Total2, from the previous equation, to show on the live server screen
+//The id in the brackets () shows where the value of line_total will be shown
+		document.querySelector("#line-1").innerHTML = line_Total1;
+
+//QUANTITIES and PRICE for item 2
+//Step 1: Here I collected the information about quantity and price for item 2.
+	const quantity_2 = document.querySelector("#line-2-quantity").value;
+		console.log(quantity_2);
+
+	const price_2 = document.querySelector("#line-2-price").value;
+		console.log(price_2);
+
+//Step 2: Calculate the total for each line const lineTotal = (quantity * price).toFixed(2);
+//The line_Total1 is the total amount calculated for item 2. I did this by multiplying the quantity and price, in the previous step, for item one and will use the output value in the next step
+	const line_Total2 = quantity_2 * price_2;
+		console.log(line_Total2);
+// Step 3: Display each line total to the screen
+//I used document.querySelector to show the value of line_Total2, from the previous equation, to show on the live server screen
+//The id in the brackets () shows where the value of line_total will be shown
+		document.querySelector("#line-2").innerHTML = line_Total2;
+
+//QUANTITIES and PRICE for item 3
+//Step 1: Here I collected the information about quantity and price for item 3
+	const quantity_3 = document.querySelector("#line-3-quantity").value;
+		console.log(quantity_3);
+
+	const price_3 = document.querySelector("#line-3-price").value;
+		console.log(price_3);
+
+//Step 2: Calculate the total for each line const lineTotal = (quantity * price).toFixed(2);
+//The line_Total1 is the total amount calculated for item 3. I did this by multiplying the quantity and price, in the previous step, for item one and will use the output value in the next step
+	const line_Total3 = quantity_3 * price_3;
+		console.log(line_Total3);
+// Step 3: Display each line total to the screen
+//I used document.querySelector to show the value of line_Total2, from the previous equation, to show on the live server screen
+//The id in the brackets () shows where the value of line_total will be shown
+		document.querySelector("#line-3").innerHTML = line_Total3;
+
+//QUANTITIES and PRICE for item 4
+//Step 1: Here I collected the information about quantity and price for item 4.
+	const quantity_4 = document.querySelector("#line-4-quantity").value;
+		console.log(quantity_4);
+
+	const price_4 = document.querySelector("#line-4-price").value;
+		console.log(price_4);
+
+//Step 2: Calculate the total for each line const lineTotal = (quantity * price).toFixed(2);
+//The line_Total1 is the total amount calculated for item 4. I did this by multiplying the quantity and price, in the previous step, for item one and will use the output value in the next step
+	const line_Total4 = quantity_4 * price_4;
+		console.log(line_Total4);
+// Step 3: Display each line total to the screen
+//I used document.querySelector to show the value of line_Total2, from the previous equation, to show on the live server screen
+//The id in the brackets () shows where the value of line_total will be shown
+		document.querySelector("#line-4").innerHTML = line_Total4;
+
+//QUANTITIES and PRICE for item 5
+//Step 1: Here I collected the information about quantity and price for item 5.
+	const quantity_5 = document.querySelector("#line-5-quantity").value;
+		console.log(quantity_5);
+
+	const price_5 = document.querySelector("#line-5-price").value;
+		console.log(price_5);
+
+//Step 2: Calculate the total for each line const lineTotal = (quantity * price).toFixed(2);
+//The line_Total1 is the total amount calculated for item 5. I did this by multiplying the quantity and price, in the previous step, for item one and will use the output value in the next step
+	const line_Total5 = quantity_5 * price_5;
+		console.log(line_Total5);
+// Step 3: Display each line total to the screen
+//I used document.querySelector to show the value of line_Total2, from the previous equation, to show on the live server screen.
+//The id in the brackets () shows where the value of line_total will be shown
+		document.querySelector("#line-5").innerHTML = line_Total5;
+
+//SUBTOTAL
+// Calculate the sub-total of all 5 lines: I added all the values i got for each line and had it total to a constant named line_tota; which i will use later on
+	const line_Total = line_Total1 + line_Total2 + line_Total3 + line_Total4 + line_Total5;
+
+// To display the sub-total on the screen i used document.querySelector and set the location to be for the subtotal. 
+		document.querySelector("#sub-total").innerHTML = line_Total;
+		console.log(line_Total);
+
+//TERNARY OPERATOR FOR THE DISCOUNT
+//This is the ternary operator to see if the user will get the discount or not based on if they spent the minimum amount
+//The discount amount does not change so it is a constant and is named discount_amount so the value it gets can be used later on
+//If the line_Total is greater than or equal to $250 then the line total and be multipled by 0.10 to calculate the amount of discount the user will get, otherwise the discount will be 0
+	const discount_amount = (line_Total >= 250) ? line_Total * 0.10 : 0;
+//The document.querySelector shows on the screen what the discount amount is, which is calculated in the previous step
+//The id "#discount" tells where the discount amount will be shown
+// adding the $ sign before the dicount amount means it will be placed before the number
+//toFixed(2) means the number will be cut to 2 decimal places
+		document.querySelector("#discount").innerHTML = "$" + discount_amount.toFixed(2); 
+		console.log(discount_amount);
+
+ //TAX ON SUBTOTAL
+//I first calculated this by identifying the tax amount is a constant, meaning the amount will not change
+//Then I have the value that will be output a name, which is tax_amount, so I can use it for later equations
+//Then I took the total proice of the items and miues the discounted price then took the result of that and multiplies it by 0.12, which is the percentage of tax that is applied
+	const tax_amount = (line_Total - discount_amount) * .12 ;
+
+		document.querySelector("#tax").innerHTML = "$" + tax_amount.toFixed(2); 
+		console.log(tax_amount); 
+
+// TOTAL CALCULATION
+//I calculated the total price by taking the subtotal I calculated and then minusing the discount amount to get the new and sometimes reduced price
+//Then I added the tax amount thatwas calculated in the previous step
+//This gives the actual final price of all the items after all the calculations, that the customer will actually pay
+	const final_price = (line_Total - discount_amount + tax_amount)
+//document.querySelector will show the calulated final price on the screen for the user
+//adding the id in the brackets tells which line the final price will be shown
+//I added the $ sign before the price number and made sure it was only showing 2 decimal places using to.Fixed(2) so the user can read the price as they usually would
+		document.querySelector("#Total").innerHTML = "$" + final_price.toFixed(2);
+
+		console.log(final_price);
+
+}
+
+//DISPLAY TO SCREEN
+// Here I attached the calculate function to the button click event using addEventListener
+//I specified what th button will be called, calculate, and that it will inact results to show on the screen when it is clicked
+document.querySelector("#calculate").addEventListener("click", calculate);
+
+
+</script>  
 </body>
 </html>
